@@ -7,6 +7,6 @@ namespace Player
     {
         public static Action<Collider> OnInteract;
         public static Action<Collider> OnHit;
-        public static Action<Collider> OnLost;
+        public static Action OnLost;
     }
 }
