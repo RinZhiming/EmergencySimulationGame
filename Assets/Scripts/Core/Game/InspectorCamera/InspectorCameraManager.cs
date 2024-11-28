@@ -1,4 +1,5 @@
 using System;
+using Player;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -45,6 +46,7 @@ namespace Core.Game.InspectorCamera
             
             currentCamera.gameObject.SetActive(true);
             currentVirtualCamera.Priority = 1;
+            PlayerEvents.OnPlayerStateChange?.Invoke(PlayerState.Idle);
         }
 
         private void OnInspectorCameraExit(Camera cam, CinemachineVirtualCameraBase cinemachineVirtualCameraBase)
@@ -56,6 +58,7 @@ namespace Core.Game.InspectorCamera
             
             currentCamera = null;
             currentVirtualCamera = null;
+            PlayerEvents.OnPlayerStateChange?.Invoke(PlayerState.Play);
         }
 
         private Vector3 GetMousePosition()
