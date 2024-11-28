@@ -23,9 +23,11 @@ namespace Player
             {
                 if (hit.collider)
                 {
+                    Debug.Log("See");
                     PlayerInteractEvents.OnHit?.Invoke(hit.collider);
                     if (Input.GetKeyDown(interactKey))
                     {
+                        Debug.Log("Interacted");
                         PlayerInteractEvents.OnInteract?.Invoke(hit.collider);
                     }
                 }
@@ -36,6 +38,7 @@ namespace Player
             }
             else
             {
+                Debug.Log("Unsee");
                 PlayerInteractEvents.OnLost?.Invoke();
             }
         }
