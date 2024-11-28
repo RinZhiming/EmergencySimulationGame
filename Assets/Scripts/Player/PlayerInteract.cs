@@ -31,7 +31,12 @@ namespace Player
                 }
                 else
                 {
+                    PlayerInteractEvents.OnLost?.Invoke();
                 }
+            }
+            else
+            {
+                PlayerInteractEvents.OnLost?.Invoke();
             }
         }
     }
