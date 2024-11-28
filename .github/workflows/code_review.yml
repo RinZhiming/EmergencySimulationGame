@@ -11,8 +11,6 @@ jobs:
   code_review:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
         
       - name: PR Agent action step
         id: pragent
