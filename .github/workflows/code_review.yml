@@ -2,11 +2,7 @@ name: AI Code Review
 
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-
-permissions:
-  pull-requests: write
-
+    
 jobs:
   code_review:
     runs-on: ubuntu-latest
@@ -16,6 +12,6 @@ jobs:
         id: pragent
         uses: Codium-ai/pr-agent@main
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           OPENAI_API_MODEL: "gpt-4o"
