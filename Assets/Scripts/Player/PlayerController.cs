@@ -14,22 +14,12 @@ namespace Player
         private Vector3 movementDirection, playerVelocity;
         private bool isActive;
 
-        private void Awake()
+        public void SetPlayerState(PlayerState state)
         {
-            CutsceneManager.onCutsceneChanged += SetPlayerState;
-        }
-
-        private void OnDestroy()
-        {
-            CutsceneManager.onCutsceneChanged -= SetPlayerState;
-        }
-
-        private void SetPlayerState(bool pause)
-        {
-            Cursor.lockState = !pause ? CursorLockMode.Locked : CursorLockMode.None;
-            Cursor.visible = !pause;
-            cameraPlayer.gameObject.SetActive(!pause);
-            isActive = !pause;
+            Cursor.lockState = state is PlayerState.Play or PlayerState.Cutscene ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = state == PlayerState.Idle;
+            cameraPlayer.gameObject.SetActive(state == PlayerState.Play);
+            isActive = state == PlayerState.Play;
         }
 
         private void Update()

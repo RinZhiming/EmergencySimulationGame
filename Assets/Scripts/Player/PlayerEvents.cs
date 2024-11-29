@@ -5,6 +5,7 @@ namespace Player
     public enum PlayerState
     {
         Idle,
+        Cutscene,
         Play
     }
     
