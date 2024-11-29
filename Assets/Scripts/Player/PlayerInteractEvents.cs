@@ -5,8 +5,8 @@ namespace Player
 {
     public static class PlayerInteractEvents
     {
-        public static Action<Collider> OnInteract { get; set; }
-        public static Action<Collider> OnHit { get; set; }
-        public static Action OnLost { get; set; }
+        public static Action<Collider> OnInteract;
+        public static Action<Collider> OnHit;
+        public static Action OnLost;
     }
 }
