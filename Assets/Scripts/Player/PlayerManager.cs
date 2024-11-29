@@ -22,12 +22,15 @@ namespace Player
             playerObject = null;
             
             MenuViewManager.gameInitialized += GameInitialized;
+            PlayerEvents.OnPlayerStateChange += OnPlayerStateChange;
         }
+
 
 
         private void OnDestroy()
         {
             MenuViewManager.gameInitialized -= GameInitialized;
+            PlayerEvents.OnPlayerStateChange -= OnPlayerStateChange;
             RemovePlayer();
         }
         
@@ -56,6 +59,12 @@ namespace Player
             DontDestroyOnLoad(playerObject);
             
             SetPlayerSpawnPoint(SceneName.StreetScene);
+        }
+        
+        private void OnPlayerStateChange(PlayerState state)
+        {
+            if (!playerObject || !playerRef) return;
+            playerRef.SetPlayerState(state);
         }
 
         private void SetPlayerSpawnPoint(SceneName scene)
